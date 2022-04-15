@@ -1,0 +1,16 @@
+*{
+    margin : 0px;
+}
+
+.left {
+    margin: 0;
+    float: left;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    overflow: scroll;
+    background: floralwhite;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.left::-webkit-scrollbar { display: none; }
