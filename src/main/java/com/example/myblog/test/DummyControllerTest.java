@@ -4,6 +4,7 @@ import com.example.myblog.model.RoleType;
 import com.example.myblog.model.User;
 import com.example.myblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -26,6 +27,17 @@ public class DummyControllerTest {
     //save함수는 id를 전달하면 해당 id에 대한 데이터가 있으면 update를 해주고
     //save함수는 id를 전달하면 해당 id에 대한 데이터가 없으면 insert를 해요.
     // email, password
+
+    @DeleteMapping("/dummy/user/{id}")
+    public String delete(@PathVariable int id){
+        try {
+            userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            return "삭제에 실패하였습니다. 해당 id는 DB에 없습니다";
+        }
+
+        return "삭제되었습니다. id :"+id;
+    }
     @Transactional // 함수 종료시에 자동 commit이 됨
     @PutMapping("/dummy/user/{id}")
     public User updateuser(@PathVariable int id, @RequestBody User requestUser){ //json 데이터를 요청 => Java Object(MessageConverter의 Jackson라이브러리가 변환해서 받아줌)
@@ -42,8 +54,7 @@ public class DummyControllerTest {
         //userRepository.save(user);
 
         //더티체킹
-        return null;
-
+        return user;
     }
 
     @GetMapping("/dummy/users")
