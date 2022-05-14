@@ -44,7 +44,8 @@ public class UserApiController {
         // 여기서는 트랜잭션이 종료되기 때문에 DB에 값은 변경이 됐음.
         // 하지만 세션의 값은 변경되지 않은 상태이기 때문에 우리가 직접 세션값을 변경해줄 것임
         // 세션 등록
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        Authentication authentication = authenticationManager.
+                authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
