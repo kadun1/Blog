@@ -1,9 +1,7 @@
 package com.example.myblog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.myblog.dto.ReplySaveRequestDto;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -33,4 +31,10 @@ public class Reply {
 
     @CreationTimestamp
     private Timestamp createdate;
+
+//    public void update(User user, Board board, String content) {
+//        setUser(user);
+//        setBoard(board);
+//        setContent(content);
+//    }
 }
