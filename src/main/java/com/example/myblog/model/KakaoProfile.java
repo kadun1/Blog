@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
 @Data
 public class KakaoProfile {
 
@@ -14,7 +13,6 @@ public class KakaoProfile {
     public Properties properties;
     public KakaoAccount kakao_account;
 
-    @Generated("jsonschema2pojo")
     @Data
     public class Properties {
 
@@ -24,7 +22,6 @@ public class KakaoProfile {
 
     }
 
-    @Generated("jsonschema2pojo")
     @Data
     public class KakaoAccount {
 
@@ -37,7 +34,6 @@ public class KakaoProfile {
         public Boolean is_email_verified;
         public String email;
 
-        @Generated("jsonschema2pojo")
         @Data
         public class Profile {
 
