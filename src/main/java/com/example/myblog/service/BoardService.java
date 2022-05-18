@@ -2,29 +2,21 @@ package com.example.myblog.service;
 
 import com.example.myblog.dto.ReplySaveRequestDto;
 import com.example.myblog.model.Board;
-import com.example.myblog.model.Reply;
-import com.example.myblog.model.RoleType;
 import com.example.myblog.model.User;
 import com.example.myblog.repository.BoardRepository;
-import com.example.myblog.repository.ReplyRepsitory;
-import com.example.myblog.repository.UserRepository;
+import com.example.myblog.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final ReplyRepsitory replyRepsitory;
+    private final ReplyRepository replyRepository;
 
     @Transactional
     public void 글쓰기(Board board, User user) { // title, content
@@ -80,13 +72,13 @@ public class BoardService {
 //                .build();
 
 //        replyRepsitory.save(reply);
-        int result = replyRepsitory.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+        int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
         System.out.println(result); // 오브젝트를 출력하게 되면 자동으로 toString()이 호출됨.
 
     }
 
     @Transactional
     public void 댓글삭제(int replyId) {
-        replyRepsitory.deleteById(replyId);
+        replyRepository.deleteById(replyId);
     }
 }

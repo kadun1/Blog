@@ -1,14 +1,11 @@
 package com.example.myblog.repository;
 
-import com.example.myblog.dto.ReplySaveRequestDto;
 import com.example.myblog.model.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.transaction.Transactional;
-
-public interface ReplyRepsitory extends JpaRepository<Reply, Integer> {
+public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 
     @Modifying
     @Query(value = "INSERT INTO reply(userId, boardId, content, createDate) VALUES(?1,?2,?3,now())", nativeQuery = true)

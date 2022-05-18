@@ -19,7 +19,7 @@ let index = {
         // console.log(data);
 
         // ajax호출시 default가 비동기 호출
-        // ajax통신을 이요해서 3개의 데이터를 json으로 변경하여 insert 요청!!
+        // ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청!!
         // ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환해준다
         $.ajax({
             type: "post",
